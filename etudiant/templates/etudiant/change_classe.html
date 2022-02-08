@@ -1,0 +1,53 @@
+{% extends 'etudiant/base.html'%}
+
+{% block title%}Changer de classe {% endblock title%}
+
+
+{% block content%}
+ <section class="resume-section p-3 p-lg-5 bg-light">
+    <div class="row my-auto text-center">
+        <div class="col-12">
+           <h4 class="text-center">Changement de classe</h4>
+            <div class="mb-5 heading-border"></div>
+         </div>
+
+        <div class="col-md-12 col-sm-12 ">
+           <form class="text-center" method="get" enctype="multipart-form" action="">
+                   {% csrf_token %}
+
+               <div class="text-center mb-3">
+                  <h6 class="font-bold">Votre parcours actuel est :<span class="text-primary"> {{nomParcoursActuel}} </span> </h6>
+               </div>
+               <div class="text-center mb-3">
+                  <h6 class="font-bold">Voici les choix de parcours possibles pour la <span class="text-primary"> {{anneeSuivant}} :</span> </h6>
+               </div>
+
+                 {% for p in nomParcoursPossible %}
+               <div class="text-center mb-2">
+                  <label class="form-label ">
+                    <input type="radio" name="parcours" value="{{p}}">
+                    <i class="helper"></i>{{p}}
+                  </label>
+               </div>
+                 {% endfor %}
+                  {% if mess_color %}
+               <div class="text-success mb-3">
+                   <h6>{{message}}</h6><br>
+                   <h6>Vous êtes maintenant inscrit en classe de : {{rel.classe}}, dans le parcours : {{rel.parcours.nom}} pour
+                       l'année scolaire : {{rel.annee_scolaire}}, le {{rel.date}}</h6>
+               </div>
+                  {% else %}
+               <div class="text-danger mb-3">
+                    <h6>{{message}}</h6><br>
+               </div>
+                 {% endif %}
+               <div class=" mb-3">
+                   {{anneeScolaire}}
+               </div>
+
+               <input class="form-control text-center btn-success mx-auto" type="submit" value="Faire le changement" style="width:50%">
+           </form>
+        </div>
+     </div>
+  </section>
+{% endblock content%}

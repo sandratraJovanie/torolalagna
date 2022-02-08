@@ -1,0 +1,56 @@
+{% extends 'enseignant/base_teachers.html'%}
+ {% load static %}
+{% block title%}Mon profil {% endblock title%}
+
+
+{% block content%}
+     <section class="resume-section p-3 p-lg-5 " id="profil">
+          <div class="row my-auto">
+              <div class="col-12">
+                <h2 class="  text-center">Profil</h2>
+                <div class="mb-5 heading-border"></div>
+              </div>
+              <div class="resume-item col-md-6 col-sm-12 " >
+                <div class="card mx-0 p-4 mb-5 text-center" style="border-color: #17a2b8; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+                  <div class=" resume-content mr-auto ">
+                      <h4 class="mb-3"><i class="mr-4"></i>Informations personnelles</h4>
+
+                      <img class="img-fluid img-profile-2 rounded-circle mx-auto mb-2" src="{{Enseignants.picture.url}}" alt="">
+
+						<p>Nom : {{ Enseignants.nom }}</p>
+						<p>Prénom : {{ Enseignants.prenom }}</p>
+						<p>Sexe : {{ Enseignants.sexe }}</p>
+
+						<p>Numéro de téléphone : {{ Enseignants.numTel }}</p>
+						<p>Email : {{ Enseignants.utilisateur.email  }}  </p>
+
+                  </div>
+                  <div class="resume-date text-md-center">
+                      <a href="{% url 'update_profil_enseignants' Enseignants.id %}" type="button" class="btn btn-primary">Modifier</a>
+                  </div>
+
+                </div>
+              </div>
+              <div class="resume-item col-md-6 col-sm-12">
+                <div class="card mx-0 p-4 mb-5" style="border-color: #ffc107; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+                  <div class="resume-content mr-auto mb-5 text-center">
+                      <h4 class="mb-5"><i class="mr-4"></i>  Informations détaillées</h4>
+						<p>Adresse : {{ Enseignants.adresse }}</p>
+                      	<p>Nationalité : {{ Enseignants.nationalite }}</p>
+					  	<p>Pays d'origine : {{ Enseignants.paysOrigine }}</p>
+						<p>CIN : {{ Enseignants.cin }}</p>
+					  	<p>Date de délivrance du CIN : {{ Enseignants.datecin }}</p>
+					 	<p>Lieu de délivrance du CIN : {{ Enseignants.lieucin }}</p>
+						<p>Nom d'utilisateur : {{ Enseignants.utilisateur.username }} </p>
+
+                  </div>
+                  <div class="resume-date text-md-center">
+                      <a href="{% url 'update_profil_enseignants' Enseignants.id %}" type="button" class="btn btn-primary">Modifier</a>
+                  </div>
+
+                </div>
+              </div>
+
+          </div>
+      </section>
+{% endblock content%}

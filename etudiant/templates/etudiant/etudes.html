@@ -1,0 +1,52 @@
+{% extends 'etudiant/base.html'%}
+{% block title%} Mes études {% endblock title%}
+
+{% block content%}
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="etudes">
+          <div class="row my-auto">
+              <div class="col-12">
+                <h2 class="text-center">Etudes suivies</h2>
+                <div class="mb-5 heading-border"></div>
+              </div>
+              <div class="main-award mx-auto" id="award-box">
+                  <div class="award">
+                      <div class="award-icon"></div>
+                      <div class="award-content ">
+                          <span class="date">{{ Etudiants.DateBacc }}</span>
+                          <h5 class="title">Obtention du BACC série {{ Etudiants.serieBacc }}</h5>
+                          <p class="description text-left">
+                              Lycée d'origine : {{ Etudiants.LyceeOrigine }}
+                          </p>
+                      </div>
+                  </div>
+                  {% for relation in etud_relations %}
+                  <div class="award">
+                      <div class="award-icon"></div>
+                      <div class="award-content">
+                          <span class="date">{{ relation.annee_scolaire }}</span>
+
+                          <h5 class="title">{{ relation.classe }}</h5>
+
+                          <p class="description">
+                            {{ relation.parcours }} à
+                              {{ relation.etablissements }} de l'Université d'Antsiranana
+                          </p>
+                      </div>
+                  </div>
+                   {% empty %}
+                     <div class="award">
+                      <div class="award-icon"></div>
+                      <div class="award-content">
+
+
+                          <p class="description">
+                            Aucun Résultat
+                          </p>
+                      </div>
+                  </div>
+                   {% endfor %}
+
+              </div>
+          </div>
+      </section>
+{% endblock content%}

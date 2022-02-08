@@ -1,0 +1,444 @@
+<div class="formulaire" style="max-height: 250px;">
+			<form method="post" enctype="multipart-form" action="{% url 'score' Etudiants.id %}">
+				{% csrf_token %}
+				<div class="text-center mb-2">
+					<label class="form-label">
+						<input type="checkbox" name="checkbox" value="{{Semestre}}" checked>
+						<i class="helper"></i>{{Semestre}}
+					</label>
+				</div>
+				<!--Début de la première question-->
+				<div class="page text-left" id="page1">
+					<p><strong>Question 1:</strong> <em>Quel est votre passe-temps favori?</em></p>
+
+					<div class="radio radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio" value="0">
+							<i class="helper"></i>Jeu de construction
+						</label>
+					</div>
+					<div class="radio radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio" checked="checked" value="2">
+							<i class="helper"></i>Jeu vidéo
+						</label>
+					</div>
+					<div class="radio radio-inline">
+						<label class="form-label ">
+							<input type="radio" name="radio" value="1">
+							<i class="helper"></i>Bricolage
+						</label>
+					</div>
+					<br>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+
+				<!--Fin de la première question-->
+
+				<!--Début de la deuxième question-->
+				<div class="page text-left" id="page2">
+					<p><strong>Question 2:</strong> <em>Dans quel secteur vous aimerez travailler?</em></p>
+					<div class="radio2 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio1" value="2">
+							<i class="helper"></i>Nouvelle technologie et réseau électrique
+						</label>
+					</div>
+
+					<div class="radio2 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio1" checked="checked" value="0">
+							<i class="helper"></i>Construction des bâtiments et de nouvelles routes
+						</label>
+					</div>
+
+					<div class="radio2 radiofill radio-inline">
+						<label class="form-label ">
+							<input type="radio" name="radio1" value="1">
+							<i class="helper"></i>Industries et machines
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la deuxième question-->
+
+				<!--Début de la troisième question-->
+				<div class="page text-left" id="page3">
+					<p><strong>Question 3:</strong> <em>Quelle est votre domaine de compétence ?</em></p>
+					<div class="radio3 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio2" value="1">
+							<i class="helper"></i>Calcul complexe
+						</label>
+					</div>
+					<div class="radio3 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio2" checked="checked" value="2">
+							<i class="helper"></i>Réflexion logique
+						</label>
+					</div>
+
+					<div class="radio3 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio2" value="0">
+							<i class="helper"></i>Dessin industriel
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la troisième question-->
+
+				<!--Début de la 4ème question-->
+				<div class="page text-left" id="page4">
+					<p><strong>Question 4:</strong> <em>Pour vous, quel serait le signe d'évolution d'un pays?</em></p>
+					<div class="radio4 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio3" value="0">
+							<i class="helper"></i>Avoir des infrastrutures complexes (bâtiments, routes, ponts, etc..)
+						</label>
+					</div>
+
+					<div class="radio4 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio3" checked="checked" value="1">
+							<i class="helper"></i>Avoir des usines de constructions de machines
+						</label>
+					</div>
+
+					<div class="radio4 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio3" value="2">
+							<i class="helper"></i>Avoir des sources de production d'électricité
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 4ème question-->
+
+				<!--Début de la 5ème question-->
+				<div class="page text-left" id="page5">
+					<p><strong>Question 5:</strong> <em>L'électronique pour vous, c'est :</em></p>
+					<div class="radio5 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio4" value="2">
+							<i class="helper"></i>Intéressant
+						</label>
+					</div>
+
+					<div class="radio5 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio4" checked="checked" value="1">
+							<i class="helper"></i>Moyen
+						</label>
+					</div>
+
+					<div class="radio5 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio4" value="0">
+							<i class="helper"></i>Pas du tout intéressant
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 5ème question-->
+
+				<!--Début de la 6ème question-->
+				<div class="page text-left" id="page6">
+					<p><strong>Question 6:</strong> <em>Quel type de dessin maîtrisez-vous?</em></p>
+					<div class="radio6 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio5" value="0">
+							<i class="helper"></i>Dessin de construction (bâtiments, ponts, routes, etc...)
+						</label>
+					</div>
+
+					<div class="radio6 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio5" checked="checked" value="1">
+							<i class="helper"></i>Dessin industriel des pièces (assemblage des pièces, etc...)
+						</label>
+					</div>
+
+					<div class="radio6 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio5" value="2">
+							<i class="helper"></i>Schéma électrique
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 6ème question-->
+
+				<!--Début de la 7ème question-->
+				<div class="page text-left" id="page7">
+					<p><strong>Question 7:</strong> <em>Dans quel secteur d'activité aimerez-vous travaillez?</em></p>
+					<div class="radio7 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio6" value="1">
+							<i class="helper"></i>Industrie
+						</label>
+					</div>
+
+					<div class="radio7 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio6" checked="checked" value="0">
+							<i class="helper"></i>Bâtiment et travaux public
+						</label>
+					</div>
+					<div class="radio7 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio6" value="2">
+							<i class="helper"></i>Réseau électrique
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 7ème question-->
+
+				<!--Début de la 8ème question-->
+				<div class="page text-left" id="page8">
+					<p><strong>Question 8:</strong> <em>Travailler avec des fils électriques, est pour vous:</em></p>
+					<div class="radio8 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio7" value="0">
+							<i class="helper"></i>Difficile
+						</label>
+					</div>
+
+					<div class="radio8 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio7" checked="checked" value="1">
+							<i class="helper"></i>Moyen
+						</label>
+					</div>
+
+					<div class="radio8 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio7" value="2">
+							<i class="helper"></i>Facile
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 8ème question-->
+
+				<!--Début de la 9ème question-->
+				<div class="page text-left" id="page9">
+					<p><strong>Question 9:</strong> <em>Quel type de maintenance aimerez-vous faire:</em></p>
+					<div class="radio9 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio8" value="2">
+							<i class="helper"></i>Maintenance électrique
+						</label>
+					</div>
+
+					<div class="radio9 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio8" checked="checked" value="1">
+							<i class="helper"></i>Maintenance industrielle
+						</label>
+					</div>
+
+					<div class="radio9 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio8" value="0">
+							<i class="helper"></i>Maintenance des bâtiments et des routes
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 9ème question-->
+
+				<!--Début de la 10ème question-->
+				<div class="page text-left" id="page10">
+					<p><strong>Question 10:</strong> <em>Quels outils aimerez-vous utiliser?</em></p>
+					<div class="radio10 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio9" value="2">
+							<i class="helper"></i>Tournes-vis, multimètres, fer à souder, etc...
+						</label>
+					</div>
+
+					<div class="radio10 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio9" checked="checked" value="1">
+							<i class="helper"></i>clés, postes à soudure, mèles, etc...
+						</label>
+					</div>
+
+					<div class="radio10 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio9" value="0">
+							<i class="helper"></i>pêles, bourrettes,tourrels, etc...
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 10ème question-->
+
+				<!--Début de la 11ème question-->
+				<div class="page text-left" id="page11">
+					<p><strong>Question 11:</strong> <em>Programmer une application pour vous c'est:</em></p>
+					<div class="radio11 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio10" value="0">
+							<i class="helper"></i>Difficile
+						</label>
+					</div>
+
+					<div class="radio11 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio10" checked="checked" value="1">
+							<i class="helper"></i>Moyen
+						</label>
+					</div>
+
+					<div class="radio11 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio10" value="2">
+							<i class="helper"></i>Facile
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 11ème question-->
+
+				<!--Début de la 12ème question-->
+				<div class="page text-left" id="page12">
+					<p><strong>Question 12:</strong> <em>Quel élement aimerez-vous manipuler?</em></p>
+					<div class="radio12 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio11" value="2">
+							<i class="helper"></i>L'électricité
+						</label>
+					</div>
+
+					<div class="radio12 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio11" checked="checked" value="0">
+							<i class="helper"></i>Le ciment
+						</label>
+					</div>
+
+					<div class="radio12 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio11" value="1">
+							<i class="helper"></i>Le fer et l'acier
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 12ème question-->
+
+				<!--Début de la 13ème question-->
+				<div class="page text-left" id="page13">
+					<p><strong>Question 13:</strong> <em>Parmis les EC qui suivent,lequel maîtrisez-vous le plus?</em></p>
+					<div class="radio13 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio12" value="0">
+							<i class="helper"></i>Mécanique, Dessin Industriel, RDM
+						</label>
+					</div>
+
+					<div class="radio13 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio12" checked="checked" value="2">
+							<i class="helper"></i>Electronique, Magnétostatique,Electrostatique
+						</label>
+					</div>
+
+					<div class="radio13 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio12" value="1">
+							<i class="helper"></i>Thermodynamique, Mécanique, RDM
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 13ème question-->
+
+				<!--Début de la 14ème question-->
+				<div class="page text-left" id="page14">
+					<p><strong>Question 14:</strong> <em>Question de logique, êtes-vous plutôt:</em></p>
+					<div class="radio14 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio13" value="0">
+							<i class="helper"></i>Faible
+						</label>
+					</div>
+
+					<div class="radio14 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio13" checked="checked" value="1">
+							<i class="helper"></i>Moyen
+						</label>
+					</div>
+
+					<div class="radio14 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio13" value="2">
+							<i class="helper"></i>Fort
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="button" class="btn btn-primary suivant">Suivant</button>
+
+				</div>
+				<!--Fin de la 14ème question-->
+
+				<!--Début de la dernière question-->
+				<div class="page text-left" id="page15">
+					<p><strong>Question 15:</strong> <em>Quel type de construction aimerez-vous faire?</em></p>
+					<div class="radio15 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio14" value="0">
+							<i class="helper"></i>Conception d'un bâtiments,routes,ponts,...
+						</label>
+					</div>
+
+					<div class="radio15 radiofill radio-inline">
+						<label class="form-label mb-3">
+							<input type="radio" name="radio14" checked="checked" value="1">
+							<i class="helper"></i>Conception mécanique de pièces,de structures, de mécanismes,...
+						</label>
+					</div>
+
+					<div class="radio15 radiofill radio-inline">
+						<label class="form-label">
+							<input type="radio" name="radio14" value="2">
+							<i class="helper"></i>Conception électriques et électroniques
+						</label>
+					</div><br>
+					<button type="button" class="btn btn-info precedent">Précédent</button>
+					<button type="submit" class="btn btn-success terminer">Terminer</button>
+
+				</div>
+				<!--Fin de la dernière question-->
+				<div class="nbre my-auto"></div>
+			</form>
+		</div>

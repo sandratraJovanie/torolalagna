@@ -1,0 +1,43 @@
+{% extends 'etudiant/base.html'%}
+{% load static %}
+{% block title%} Résultat du score{%endblock title %}
+
+
+{% block content%}
+ <div class="resume-section p-3 p-lg-5">
+       <div class="row my-auto">
+            <div class="col-12">
+               <h5 class="text-center"> Résultat du score de questionnaire</h5>
+               <div class="mb-5 heading-border"></div>
+            </div>
+
+                 <div class="col-md-12 col-sm-12 ">
+                    <form id="resultat" class="text-center" method="post" enctype="multipart-form" action="{% url 'orientation_student' Etudiants.id %}">
+                            {% csrf_token %}
+                        <div class="text-center mb-2">
+								<label class="form-label">
+                    			 <input type="checkbox" name="checkbox" value="{{Semestre}}" checked>
+									<i class="helper"></i>{{Semestre}}
+								</label>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="Score" class="form-label text-center" style="width:50%">Le résultat de votre questionnaire est :</label>
+                            <input id="affiche" type="text" name="Score" class="form-control text-center mx-auto mb-3"
+                                   value="{{Score}}" style="width:50%" disabled>
+                          </div>
+                        <input class="form-control text-center btn-success mx-auto" type="submit" value="Passer à l'orientation" style="width:50%">
+                    </form>
+                  </div>
+               <script>
+                  let val =  document.getElementById("affiche").value;
+                 document.getElementById("resultat").addEventListener("submit", function(e){
+
+                  document.getElementById("affiche").disabled=false;
+                 });
+
+               </script>
+        </div>
+ </div>
+
+{% endblock content %}
+

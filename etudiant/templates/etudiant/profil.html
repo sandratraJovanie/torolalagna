@@ -1,0 +1,58 @@
+{% extends 'etudiant/base.html'%}
+ {% load static %}
+{% block title%}Mon profil {% endblock title%}
+
+
+{% block content%}
+     <section class="resume-section p-3 p-lg-5 " id="profil">
+          <div class="row my-auto">
+              <div class="col-12">
+                <h2 class="  text-center">Profil</h2>
+                <div class="mb-5 heading-border"></div>
+              </div>
+              <div class="resume-item col-md-6 col-sm-12 " >
+                <div class="card mx-0 p-4 mb-5" style="border-color: #17a2b8; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+                  <div class=" resume-content mr-auto text-center">
+                      <h4 class="mb-3"><i class=" mr-3"></i> Informations personnelles</h4>
+                      {% if Etudiants.pictureEtud %}
+                     	<img class="img-fluid img-profile-2 rounded-circle mx-auto mb-2" src="{{Etudiants.pictureEtud.url}}" alt="">
+                      {% else %}
+                      <img class="img-fluid img-profile-2 rounded-circle mx-auto mb-2" src="{% static 'image/avatar.png' %}" alt="">
+                      {% endif %}
+						<p>Nom : {{ Etudiants.nomEtud }}</p>
+						<p>Prénom : {{ Etudiants.prenomEtud }}</p>
+						<p>Sexe : {{ Etudiants.sexEtud }}</p>
+						<p>Adresse : {{ Etudiants.adresse }}</p>
+						<p>Numéro de téléphone : {{ Etudiants.numTel }}</p>
+						<p>Email : {{ Etudiants.utilisateur.email }} </p>
+                  </div>
+                  <div class="resume-date text-md-center">
+                     <a href="{% url 'update_profil_student' Etudiants.id %}" type="button" class="btn btn-primary">Modifier</a>
+                  </div>
+				</div>
+              </div>
+              <div class="resume-item col-md-6 col-sm-12">
+                <div class="card mx-0 p-4 mb-5" style="border-color: #ffc107; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+                  <div class="resume-content mr-auto mb-3 text-center">
+                      <h4 class="mb-5"><i class=" mr-3"></i>  Informations détaillées</h4>
+                      <p>Date de naissance :{{ Etudiants.dateNaissance }}</p>
+						<p>Lieu de naissance : {{ Etudiants.lieuNaissance }}</p>
+						<p>Nom du père : {{ Etudiants.pere }}</p>
+						<p>Nom de la mère : {{ Etudiants.mere }}</p>
+						<p>Pays d'origine : {{ Etudiants.paysOrigine }}</p>
+						<p>Nationalité : {{ Etudiants.nationalite }}</p>
+						<p>CIN : {{ Etudiants.cin }}</p>
+						<p>Date de délivrance du CIN : {{ Etudiants.dateCin }} </p>
+						<p>Lieu de délivrance du CIN : {{ Etudiants.lieuCin }}</p>
+					 	<p>Nom d'utilisateur : {{ Etudiants.utilisateur.username }}</p>
+                  </div>
+                  <div class="resume-date text-md-center">
+                      <a href="{% url 'update_profil_student' Etudiants.id %}" type="button" class="btn btn-primary">Modifier</a>
+                  </div>
+
+
+              </div>
+
+          </div>
+      </section>
+{% endblock content%}

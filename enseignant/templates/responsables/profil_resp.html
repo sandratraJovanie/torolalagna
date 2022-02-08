@@ -1,0 +1,56 @@
+{% extends 'responsables/base_resp.html'%}
+ {% load static %}
+{% block title%}Mon profil {% endblock title%}
+
+
+{% block content%}
+     <section class="resume-section p-3 p-lg-5 " id="profil">
+          <div class="row my-auto">
+              <div class="col-12">
+                <h2 class="  text-center">Profil</h2>
+                <div class="mb-5 heading-border"></div>
+              </div>
+              <div class="resume-item col-md-6 col-sm-12 " >
+                <div class="card mx-0 p-4 mb-5" style="border-color: #17a2b8; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+                  <div class=" resume-content mr-auto text-center">
+                      <h4 class="mb-3"><i class=" mr-3 "></i> Informations personnelles</h4>
+                     	  {% if Responsable.enseignant.picture %}
+							<img class="img-fluid img-profile-2 rounded-circle mx-auto mb-2" src="{{Responsable.enseignant.picture.url}}" alt="">
+							{% else %}
+							<img class="img-fluid img-profile-2 rounded-circle mx-auto mb-2" src="{% static 'image/avatar.png' %}" alt="">
+							{% endif %}
+						<p>Nom : {{ Responsable.enseignant.nom }}</p>
+						<p>Prénom : {{ Responsable.enseignant.prenom }}</p>
+						<p>Sexe : {{ Responsable.enseignant.sexe }}</p>
+						<p>Numéro de téléphone :{{ Responsable.enseignant.numTel }}</p>
+						<p>Email : {{ request.user.email }}  </p>
+                  </div>
+                  <div class="resume-date text-md-center">
+                      <a href="{% url 'update_profil' Responsable.id %}" type="button" class="btn btn-primary">Modifier</a>
+                  </div>
+				</div>
+
+              </div>
+				  <div class="resume-item col-md-6 col-sm-12">
+					<div class="card mx-0 p-4 mb-5" style="border-color: #ffc107; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+					  <div class="resume-content mr-auto mb-2 text-center">
+						  <h4 class="mb-2 mt-1"><i class="mr-3 "></i>  Informations détaillées</h4>
+							<p>Adresse : {{ Responsable.enseignant.adresse }}</p>
+							<p>Nationalité : {{ Responsable.enseignant.nationalite }}</p>
+							<p>Pays d'origine : {{ Responsable.enseignant.paysOrigine }}</p>
+							<p>CIN : {{ Responsable.enseignant.cin }}</p>
+							<p>Date de délivrance du CIN : {{ Responsable.enseignant.datecin }}</p>
+							<p>Lieu de délivrance du CIN : {{ Responsable.enseignant.lieucin }}</p>
+							<p>Grade: Responsable de {{Responsable.parcours}}</p>
+							<p>Nom d'utilisateur : {{ request.user.username }} </p>
+					  </div>
+					  <div class="resume-date text-md-center">
+						  <a href="{% url 'update_profil' Responsable.id %}" type="button" class="btn btn-primary">Modifier</a>
+					  </div>
+					</div>
+				  </div>
+              </div>
+
+          </div>
+      </section>
+{% endblock content%}

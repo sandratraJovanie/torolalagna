@@ -1,0 +1,201 @@
+{% extends 'etudiant/base.html'%}
+{% load static %}
+{% block title%}Simulation {% endblock title%}
+{% block content%}
+<section class="resume-section p-3 p-lg-5 bg-secondary" id="simulation">
+          <div class="row my-auto mx-auto">
+              <div class="col-12">
+                <h2 class="text-light text-center">Simulation</h2>
+                <div class="mb-5 heading-border"></div>
+              </div>
+
+
+			  <div class="col-md-12 col-sm-12 ">
+					<div class="container-fluid col-md-6 col-sm-12 mb-3">
+
+						<form method="get" class="justify-content-center text-center" >
+                             <p class="mb-3 text-center text-light">{{myfiltre.form.classe.label}}</p>
+                                {{myfiltre.form.classe}}
+
+                            <input id="envoiClasse" type="submit" class="btn btn-primary mb-3" value="Afficher les notes">
+                        </form>
+						<p id="text" class="mb-3 text-center text-light" >Veuillez entrer les notes pour faire la simulation</p>
+					</div>
+
+                  <div  id="form1" class="resume-item col-md-12 col-sm-12 " >
+
+                            <form method="post" class="row" >
+                               {% csrf_token %}
+                              <div class="resume-item col-md-6 col-sm-12 " >
+                                <div class="card mx-0 p-4 mb-5" style="border-color: #17a2b8; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+                                      <div class=" resume-content text-center">
+                                          <h4 class="mb-3"><i class=" mr-3 "></i> Notes du {{rel1}}</h4>
+                                            <table border="1px solid;" id="tables" class="table table-striped table-secondary text-center">
+                                                <colgroup>
+                                                    <col span="2">
+                                                    <col>
+                                                </colgroup>
+                                                <tr>
+                                                    <th scope="col">Nom de l'EC</th>
+                                                    <th scope="col">Note de l'EC</th>
+
+                                                </tr>
+                                                 {% for ec in ecs %}
+                                                  {% if ec.niveaux.id == rel1.id %}
+                                                <tr>
+
+                                                    <th scope="row">{{ec.nom}}</th>
+                                                    <td> <input type="text" name="note{{forloop.counter}}" class="note form-control text-center mx-auto"
+                                                                style="width: 50%" id="note{{forloop.counter}}" value="0.0"></td>
+                                                </tr>
+                                                {% endif %}
+                                                 {% empty %}
+                                                    <tr>
+
+                                                            <th scope="row">Aucun résultat trouvé</th>
+                                                            <td> </td>
+                                                        </tr>
+                                                 {% endfor %}
+                                            </table>
+                                      </div>
+
+                                </div>
+                            </div>
+
+                              <div class="resume-item col-md-6 col-sm-12">
+                                    <div class="card mx-0 p-4 mb-5" style="border-color: #ffc107; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
+                                          <div class="resume-content text-center">
+                                               <h4 class="mb-3"><i class=" mr-3"></i> Notes du {{rel2}}</h4>
+                                                <table border="1px solid;" class="table table-striped table-secondary text-center">
+                                                    <colgroup>
+                                                        <col span="2">
+                                                        <col>
+                                                    </colgroup>
+                                                    <tr>
+                                                        <th scope="col">Nom de l'EC</th>
+                                                        <th scope="col">Note de l'EC</th>
+
+                                                    </tr>
+                                                      {% for ec in ecs %}
+                                                         {% if ec.niveaux.id == rel2.id %}
+                                                            <tr>
+
+                                                                <th scope="row">{{ec.nom}}</th>
+                                                                <td> <input id="note{{ forloop.counter}}" type="text" name="note{{forloop.counter}}" class="note form-control text-center mx-auto"
+                                                                            style="width: 50%" value="0.0"></td>
+                                                            </tr>
+
+                                                         {% endif %}
+                                                         {% empty %}
+                                                        <tr>
+
+                                                            <th scope="row">Aucun résultat trouvé</th>
+                                                            <td> </td>
+                                                        </tr>
+                                                         {% endfor %}
+                                                </table>
+                                          </div>
+
+                                    </div>
+
+                              </div>
+                                {% if x == total_ec %}
+                              <div class="col-md-12 col-sm-12 ">
+                                    <div class="container-fluid col-md-6 col-sm-12 mb-3">
+
+                                        <div class="justify-content-center text-center" >
+
+                                            <label for="score" class="form-label text-light">
+                                                Veuillez entrer le score du questionnaire (entre 0 à 30)</label>
+                                            <input type="text" name="score" value="0.0" class="score form-control text-center mx-auto mb-2" style="width: 30%;">
+                                            <input id="simuler" type="submit" class="btn btn-primary" value="Simuler">
+                                            <p class="text-danger mb-3"></p>
+
+                                        </div>
+                                    </div>
+                              </div>
+                                {% else %}
+                                    <div class="col-md-12 col-sm-12 "> </div>
+                                {% endif %}
+                          </form>
+                          {% if x == total_ec %}
+                            <div class="col-md-12 col-sm-12 ">
+                            <p class="mb-3 text-center text-light">Prédiction pour chaque parcours :</p>
+                            <div class="row text-center my-auto">
+                                {% for cle, valeur in message.items %}
+                                      <div class="col-md-4 col-sm-6">
+                                          <div class="skill-item">
+                                              <h1 class="text-primary">{{cle}}</h1>
+                                              <h2><span class="counter"> {{valeur}} </span><span>%</span></h2>
+
+                                          </div>
+                                      </div>
+                                {% empty %}
+                                    <div class="col-md-12 col-sm-12">
+                                         <h6 class="text-light text-center">"Pas encore de prédiction"</h6>
+                                    </div>
+                                {% endfor %}
+                             </div>
+                        </div>
+
+                         {% else %}
+                            <div class="col-md-12 col-sm-12 "> </div>
+                        {% endif %}
+                  </div>
+              </div>
+          </div>
+
+
+      </section>
+ <script >
+
+        //console.log(document.forms['form']['note1']);
+        let inputs = document.querySelectorAll('.note');
+        let scores = document.querySelector('.score');
+         let classe = document.querySelector('classe');
+
+         classe.addEventListener('change', function(e){
+            let index = classe..selectedIndex;
+
+         });
+
+        inputs.forEach((input,index)=>{
+            input.addEventListener('input',function(e){
+               if(isNaN(input.value)){
+                 input.value=0.0;
+                 input.autofocus=true;
+                 alert('Veuillez entrer un nombre!');
+                 return false;
+                }
+                input.maxLength = 5;
+                if (input.value>20){
+                    input.value=0.0;
+                    input.autofocus=true;
+                    alert('Veuillez entrer un nombre inférieur à 20');
+                    return false;
+
+                }
+
+            });
+
+        });
+        scores.addEventListener('input',function(e){
+            if(isNaN(scores.value)){
+                 scores.value=0.0;
+                 scores.autofocus=true;
+                 alert('Veuillez entrer un nombre!');
+                 return false;
+            }
+                scores.maxLength = 5;
+                if (scores.value>30){
+                    scores.value=0.0;
+                    scores.autofocus=true;
+                    alert('Veuillez entrer un nombre inférieur à 30');
+                    return false;
+                }
+        });
+
+
+     </script>
+
+{% endblock %}

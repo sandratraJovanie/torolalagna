@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+     {% load static %}
+	<title> Torolalagna | Page de connexion </title>
+    <link rel="shortcut icon" type="image/png" href="{%static 'image/lo.png'%}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+    <style>
+		 .image-container {
+			  background-image: url("{% static 'image/b.jpg' %}");
+			  background-size: cover;
+			  background-position: center center;
+			  background-repeat: no-repeat;
+		  }
+
+	</style>
+
+</head>
+<body >
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 d-none d-md-block image-container">
+            </div>
+
+            <div class="col-lg-6 col-md-6 form-container">
+                <div class="col-lg-8 col-md-12 col-sm-9 col-xs-12 form-box text-center">
+                    <div class="logo mb-3">
+                         <h2 class=""> <img class="img-fluid img-logo rounded-circle mx-auto" src="{%static 'image/lo.png'%}" style="width:10%" alt="">
+                           <span class="text-info">Torolalagna</span></h2>
+                    </div>
+
+                    <div class="heading mb-4">
+                        <h4>Connectez avec votre compte enseignant</h4>
+                    </div>
+                        {% for message in messages %}
+                             <p class="text-danger"> {{message}}  </p>
+                        {% endfor %}
+                    <form method="post">
+
+                        {% csrf_token %}
+                        <div class="form-input">
+
+                            <input type="text" placeholder="Nom d'utilisateur" name="username" class="form-control" required>
+                        </div>
+                        <div class="form-input">
+
+                            <input type="password" placeholder="Mot de passe" name="password" class="form-control" required>
+                        </div>
+                        <div class="row text-left mb-3">
+
+                            <div class="col-6 ">
+                                <a href="#" class="forget-link">Mot de passe oublié?</a>
+                            </div>
+
+                        </div>
+                        <div class="text-left mb-3">
+                            <button type="submit" class="btn">Se connecter</button>
+                        </div>
+                        <div class="text-left" style="color: #777">Vous n'avez pas de compte? Veuillez contacter l'administrateur du site.
+
+                        </div>
+                        <div class="text-left mt-3" style="color: #777">Pour revenir à la page d'accueil
+                            <a href="{%url 'home' %}" class="register-link">Cliquez ici</a>
+
+                        </div>
+                    </form>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

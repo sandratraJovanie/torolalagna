@@ -1,0 +1,116 @@
+{% extends 'enseignant/base_teachers.html'%}
+{% load static %}
+{% block title%}Mes suivis {% endblock title%}
+
+
+{% block content%}
+
+<section class="resume-section p-3 p-lg-5 bg-light" id="suivis">
+
+          <div class="row my-auto">
+              <div class="col-12">
+                <h2 class="text-center">SUIVIS</h2>
+                <div class="mb-5 heading-border"></div>
+              </div>
+
+             <div class="col-md-12 col-sm-12 ">
+             	<div class="container-fluid col-md-6 col-sm-12 mb-5 ">
+             		<form method="get">
+				      {{monFiltre.form}}
+				      <button class="btn btn-outline-success mt-2" type="submit" >Recherche</button>
+				    </form>
+				</div>
+				<div class="mb-5" id="recherche">
+				    	<table class="table table-striped table-secondary ">
+				    		<colgroup>
+								<col span="2">
+								</col>
+							</colgroup>
+							<tr>
+								<th scope="col" class="text-center">Nom de l'étudiant</th>
+								<th scope="col" class="text-center">Voir le profil de l'étudiant</th>
+								<th scope="col" class="text-center">Statut</th>
+							</tr>
+							{% for etudiant in Etudiant %}
+				    		<tr>
+									<th scope="row" ><span><img src="{{etudiant.pictureEtud.url}}" style="width: 45px;height: 45px; border-radius: 45%; padding-right: 3px;" >
+									</span> {{ etudiant.nomEtud }} {{ etudiant.prenomEtud }}</th>
+									<td class="text-center"><a href="{% url 'profil_etudiant_suivi' etudiant.id %}"
+										   class="btn btn-info ">Voir le profil</a></td>
+								{% for suivi in etudiants_suivis %}
+									<td class="text-center">
+										{% if etudiant.id == suivi.etudiant.id  %}
+											<span class="text-success">Etudiant déjà suivi</span>
+										{% else %}
+
+											<a href="{%url 'ajout_suivi' etudiant.id%}" class="btn btn-success">Suivre</a>
+
+										{% endif %}
+									</td>
+								{% empty %}
+									<td class="text-center">
+										<a href="{%url 'ajout_suivi' etudiant.id%}" class="btn btn-success">Suivre</a>
+									</td>
+								{% endfor %}
+
+							{% endfor %}
+
+				    	</table>
+				</div>
+				<div>
+					<h4 class="text-center mb-3">Liste des étudiants suivis</h4>
+					<table class="table table-striped table-secondary text-center">
+
+				    			<colgroup>
+									<col span="2">
+									</col>
+								</colgroup>
+
+								<tr class="py-3">
+									<th scope="col">Nom de l'étudiant</th>
+
+									<th scope="col">Date du suivi</th>
+									<th scope="col">Supprimer le suivi</th>
+
+								</tr>
+								{% for suivi in etudiants_suivis %}
+
+								<tr>
+								<th scope="row"><a href="{% url 'profil_etudiant_suivi' suivi.etudiant.id %}"><span><img src="{{ suivi.etudiant.pictureEtud.url }}" style="width: 45px;height: 45px; border-radius: 45%; padding-right: 3px;" ></span>
+									{{ suivi.etudiant.nomEtud }} {{ suivi.etudiant.prenomEtud }} </a></th>
+
+									<td>{{ suivi.date }}</td>
+									<td><a href="{%url 'supprime_suivi' suivi.etudiant.id%}" class="btn btn-danger text-light">Supprimer</a></td>
+								</tr>
+								{% empty%}
+									<tr>
+									<th></th>
+									<td class="text-center">Actuellement, vous n'avez pas d'étudiant suivi.</td>
+									<td></td>
+								</tr>
+								{% endfor%}
+
+				    	</table>
+				</div>
+
+             </div>
+
+          </div>
+      </section>
+	<footer class="bg-dark">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<h3 class="text-warning font-weight-light p-3 ">
+						Torolalagna
+					</h3>
+
+					<!--<p class="text-white mb-3">Copyright ©2021 All rights reserved | Ce site a été fait par
+                      <a href="#"><span class="text-info">Rafanomezantsoa Sandratra Jovanie Ronaldo</span></a>
+					</p>-->
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--Fin du footer-->
+{% endblock content%}

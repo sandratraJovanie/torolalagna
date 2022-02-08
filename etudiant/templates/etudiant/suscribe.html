@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+     {% load static %}
+    <title>Torolalagna | Inscription étudiant 1/3</title>
+     <link rel="shortcut icon" type="image/png" href="{%static 'image/lo.png'%}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/suscribe.css' %}">
+</head>
+<body>
+
+      <!-- MultiStep Form -->
+<section class="resume-section p-0 p-lg-5 ">
+  <div class="row my-auto" >
+      <div class="col-12" >
+          <h3 class="  text-center">Création du compte étudiant</h3>
+          <h5 class="  text-center">Etape 1/3</h5>
+          <div class="mb-3 heading-border"></div>
+      </div>
+      <div class="container" >
+    <div class="row ">
+        <div class="col-md-6 col-md-offset-2 mx-auto">
+            <form action="" method="post" enctype="multipart/form-data" class="mx-auto text-center py-2" style="border:1px solid black;">
+                <p class="text-center">Veuillez entrer les informations demandés</p>
+                {% csrf_token %}
+                   <div >
+                       <div class="form-group mb-3 ">
+
+                           <label class="form-label text-left">{{form.username.label}}</label><br>
+
+                           {{form.username}}
+                        </div>
+                        <div class="form-group mb-3 ">
+                           <label class="form-label">{{form.email.label}}</label><br>
+                           {{form.email}}
+                        </div>
+                       <div class="form-group mb-3 ">
+                           <label class="form-label">{{form.password1.label}}</label><br>
+                           {{form.password1}}
+                         </div>
+                       <div class="form-group mb-3 ">
+                           <label class="form-label">{{form.password2.label}}</label><br>
+                           {{form.password2}}
+                       </div>
+                    </div>
+
+                <div class="col-lg-10 col-md-8 col-sm-12 mx-auto " style="width:50%;">
+                    <button type="submit" class="btn btn-primary mb-3">Suivant</button>
+                </div>
+                <div class="col-lg-10 col-md-8 col-sm-12 mx-auto " >
+                    <p>Pour vous connectez à votre compte,<a href="{%url 'login'%}">Cliquez ici</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+   </div>
+</section>
+<!-- /.MultiStep Form -->
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/suscribe.js' %}"></script>
+    <script>
+
+        var form_fields = document.getElementsByTagName('input')
+        for(var field in form_fields){
+            form_fields[field].className ='from-control p-1'
+        }
+    </script>
+</body>
+</html>

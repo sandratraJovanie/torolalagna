@@ -1,0 +1,105 @@
+{% extends 'etudiant/base.html'%}
+{% load static %}
+{% block title%} Mon orientation {% endblock title%}
+
+{% block content%}
+    <section class=" d-flex flex-column" id="orientation">
+         <div class="p-lg-5 p-3 skill-cover">
+          <h3 class="text-center text-white">Orientation</h3>
+          <p class="mb-3 text-center text-light">Voici les pourcentages pour chaque mention pour la 2ème année, d'après les notes et les réponses du questionnaire:</p>
+          <div class="row text-center my-auto">
+                 {% if orient.semestre.id == sem2.id %}
+              <div class="col-md-4 col-sm-6">
+
+                  <div class="skill-item">
+                      <h1 class="text-primary">{{orient.parcOptimal1}}</h1>
+                      <h2><span class="counter"> {{orient.pourcentage1}} </span><span>%</span></h2>
+                      {% for c, v in m.items %}
+
+                            {% if c == orient.parcOptimal1 %}
+                                <p>{{ v }}</p>
+                            {% endif %}
+                       {% endfor %}
+                  </div>
+              </div>
+
+               <div class="col-md-4 col-sm-6">
+
+                  <div class="skill-item">
+                      <h1 class="text-primary">{{orient.parcOptimal2}}</h1>
+                      <h2><span class="counter"> {{orient.pourcentage2}} </span><span>%</span></h2>
+                      {% for c, v in m.items %}
+
+                            {% if c == orient.parcOptimal2 %}
+                                <p>{{ v }}</p>
+                            {% endif %}
+                       {% endfor %}
+                  </div>
+              </div>
+
+              <div class="col-md-4 col-sm-6">
+
+                  <div class="skill-item">
+                      <h1 class="text-primary">{{orient.parcOptimal3}}</h1>
+                      <h2><span class="counter"> {{orient.pourcentage3}} </span><span>%</span></h2>
+                      {% for c, v in m.items %}
+
+                            {% if c == orient.parcOptimal1 %}
+                                <p>{{ v }}</p>
+                            {% endif %}
+                       {% endfor %}
+                  </div>
+              </div>
+             {% endif%}
+          	</div>
+         </div>
+      </section>
+    	<footer class="bg-dark">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<h3 class="text-warning font-weight-light p-3 ">
+						Torolalagna
+					</h3>
+
+					<!--F<p class="text-white mb-3">Copyright ©2021 All rights reserved | Ce site a été fait par
+                      <a href="#"><span class="text-info">Rafanomezantsoa Sandratra Jovanie Ronaldo</span></a>
+					</p>-->
+                </div>
+			</div>
+		</div>
+	</footer>
+	<!--Fin du footer-->
+  <script type="text-script">
+      $(document).ready(function(){
+
+        $(".filter-b").click(function(){
+            var value = $(this).attr('data-filter');
+            if(value == "all")
+            {
+                $('.filter').show('1000');
+            }
+            else
+            {
+                $(".filter").not('.'+value).hide('3000');
+                $('.filter').filter('.'+value).show('3000');
+            }
+        });
+
+        if ($(".filter-b").removeClass("active")) {
+          $(this).removeClass("active");
+        }
+        $(this).addClass("active");
+        });
+
+        // SKILLS
+        $(function () {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 2000
+            });
+
+        });
+      });
+    </script>
+{% endblock content%}

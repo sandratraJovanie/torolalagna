@@ -1,0 +1,75 @@
+{% extends 'responsables/base_resp.html'%}
+{% load static %}
+{% block title%}Ajouter un EC {% endblock title%}
+
+{% block content%}
+    <section class="resume-section p-3 p-lg-5 " id="ec">
+    	<div class="row justify-content-center my-auto">
+              <div class="col-12">
+                <h3 class="text-center">Ajout d'un EC</h3>
+                <div class="mb-5 heading-border"></div>
+              </div>
+
+              <div class="container-fluid col-md-12 col-sm-12 mb-5">
+                  	<div class="row justify-content-center" >
+                        <form class="col-md-6 col-sm-12 " method="post">
+                                <div class="">
+                                    {% if form.non_field_errors %}
+                                        {% for error in form.non_field_errors %}
+                                            <p><strong class="text-danger">{{error}}</strong></p>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% csrf_token %}
+
+                                        <div class="form-group mb-3 ">
+                                           <label class="form-label">{{form.annee_scolaire.label}}</label><br>
+
+						                	    {{form.annee_scolaire}}
+                                        </div>
+                                        <div class="form-group mb-3 ">
+                                           <label class="form-label">{{form.classe.label}}</label><br>
+
+						                	    {{form.classe}}
+                                        </div>
+                                        <div class="form-group mb-3 ">
+                                               <label class="form-label">{{form.niveaux.label}}</label><br>
+
+                                                    {{form.niveaux}}
+                                         </div>
+
+                                        <div class="form-group mb-3 ">
+                                               <label class="form-label">{{form.ue.label}}</label><br>
+
+                                                    {{form.ue}}
+                                            </div>
+                                        <div class="form-group mb-3 ">
+                                            <label class="form-label">{{form.nom.label}}</label><br>
+
+                                            {{form.nom}}
+                                        </div>
+                                        <div class="form-group mb-3 ">
+                                            <label class="form-label">{{form.coefficient.label}}</label><br>
+
+                                            {{form.coefficient}}
+                                        </div>
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <p><strong class="text-danger">{{message}}</strong></p>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if field_errors %}
+                                        {% for error in field_errors %}
+                                            <p><strong class="text-danger">{{error}}</strong></p>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <a href="{% url 'ec' Responsable.id %}" type="button" class="btn btn-danger mt-2" >Annuler</a>
+                                    <button type="submit" class="btn btn-secondary mt-2" >Enregistrer</button>
+                                </div>
+                        </form>
+                     </div>
+			  </div>
+        </div>
+    </section>
+
+
+{% endblock content%}

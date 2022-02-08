@@ -1,0 +1,29 @@
+{% extends 'etudiant/base.html'%}
+{% load static %}
+{% block title%}Accueil {% endblock title%}
+
+
+{% block content%}
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about" >
+
+          <div class="my-auto " >
+
+              <h2 class="mb-0">Bienvenue sur votre profil
+                {% if Etudiants.sexEtud == 'Homme' %}
+                    <span> Mr. </span>
+                  {% else%}
+                    <span> Mdme. </span>
+                  {% endif%}
+                <span class="text-primary">{{ Etudiants.nomEtud }}</span>
+                  <span class="text-primary">{{ Etudiants.prenomEtud }}</span>
+
+              </h2>
+
+              <div class="subheading my-3">Ici, vous pourrez voir vos informations ainsi que vos notes. Vous pourrez aussi vous orientez vers les mentions/parcours en utilisant le système d'orientation.
+              </div>
+
+          </div>
+
+ </section>
+{% endblock content%}

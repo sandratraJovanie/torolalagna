@@ -1,0 +1,67 @@
+{% extends 'etudiant/base.html'%}
+{% load static %}
+{% block title%} Questionnaires {%endblock title %}
+
+
+{% block content%}
+<section class="resume-section p-3 p-lg-5 " id="questions">
+          <div class="row my-auto">
+              <div class="col-12">
+                <h2 class="text-center">Questions</h2>
+                <div class="mb-5 heading-border"></div>
+              </div>
+               <div class="col-md-5 col-sm-12 " style="background-color: lightgray;border-radius: 4%;box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25) ">
+                <div class="card mx-0 p-4 " style="background-color: lightgray;border: none; ">
+                  <div class="resume-content my-auto text-center">
+                      <h4 class="mb-5"> Réglages pour le questionnaire</h4>
+                     	<form method="post" enctype="multipart-form">
+							   {% csrf_token %}
+							<div class="form-group ">
+								<label for="semestre" class="form-label mb-3">Choisissez l'intervalle de semestre pour effectuer l'orientation :</label><br>
+								<select name="semestre" class="form-control p-2">
+									<option value="Semestre 2-Semestre 3">Semestre 2-Semestre 3</option>
+									<option value="S2">Semestre 3-Semestre 4</option>
+									<option value="S3">Semestre 4-Semestre 5</option>
+									<option value="S4">Semestre 5-Semestre 6</option>
+									<option value="S5">Semestre 6-Semestre 7</option>
+									<option value="S6">Semestre 7-Semestre 8</option>
+								</select>
+							</div>
+						<div class="form-group ">
+							<label for="mention" class="form-label mb-3">Choisissez votre mention actuelle pour effectuer l'orientation :</label><br>
+							<select name="mention" class="form-control p-2">
+								<option >TCI</option>
+								<option >GC</option>
+								<option >GM</option>
+								<option >GE</option>
+								<option >STIC</option>
+								<option >HE</option>
+							</select>
+						</div>
+						<div class="resume-date text-center ">
+						  <input type="submit" class="btn btn-info" value="Afficher le questionnaire" style="width:70%">
+					  </div>
+					</form>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12 offset-1" style="background-color: lightgray;border-radius: 4%;box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25) ">
+                <div class="card mx-0 p-4 " style="background-color: lightgray;border: none; ">
+                  <div class="resume-content my-auto text-center">
+                      <h4 class="mb-3">Questionnaire d'orientation</h4>
+						{% if Semestre == 'Semestre 2-Semestre 3' and Mention == 'TCI'%}
+							{%include 'etudiant/Q1.html'%}
+						{% else %}
+					  		 <p class="mb-3 text-black-50">Aucun questionnaire trouvé!</p>
+					  	{% endif %}
+
+                  </div>
+
+                </div>
+              </div>
+
+          </div>
+      </section>
+	<script src="{% static 'js/code.js' %}"></script>
+{% endblock content %}

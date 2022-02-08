@@ -1,0 +1,31 @@
+{% extends 'responsables/base_resp.html'%}
+{% load static %}
+{% block title%}Accueil {% endblock title%}
+
+
+{% block content%}
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about" >
+
+          <div class="my-auto " >
+
+              <h2 class="mb-0">Bienvenue sur votre profil
+                 {% if Responsable.enseignant.sexe == 'Homme' %}
+                    <span> Mr. </span>
+                  {% else%}
+                    <span> Mdme. </span>
+                  {% endif%}
+
+
+                <span class="text-primary">{{ Responsable.enseignant.nom }}</span>
+                  <span class="text-primary">{{ Responsable.enseignant.prenom }}</span>
+              </h2>
+
+              <div class="subheading my-3">Ici, vous pourrez voir vos informations ainsi que les étudiants que vous suivez. Vous pourrez
+                  aussi gérer la mention dont vous êtes responsable comme le fait d'ajouter et de modifier les UE, EC et les notes des
+                  étudiants.
+              </div>
+
+          </div>
+ </section>
+{% endblock content%}
