@@ -30,10 +30,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-(lev7yq)f#59ke
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-if DEBUG == True:
-    ALLOWED_HOSTS = []
-else:
-    ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
+
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '')
+
 
 
 
